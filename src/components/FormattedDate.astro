@@ -4,14 +4,19 @@ interface Props {
 }
 
 const { date } = Astro.props;
+
+import dayjs from 'dayjs';
+
+const formattedDate = dayjs(date).format('YYYY.MM.DD');
 ---
 
 <time datetime={date.toISOString()}>
-	{
-		date.toLocaleDateString('en-us', {
+	<!-- {
+		date.toLocaleDateString('zh-tw', {
 			year: 'numeric',
-			month: 'short',
+			month: 'numeric',
 			day: 'numeric',
 		})
-	}
+	} -->
+	{formattedDate}
 </time>
